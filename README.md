@@ -40,7 +40,7 @@ python3 test_skill_search.py
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Acknowledgments
 
