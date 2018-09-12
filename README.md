@@ -6,7 +6,7 @@ Project is made for a recruitment process. The program only makes sense when two
 
 ## Getting started
 
-These isntructions will get you a copy of the project up and running on your local machine.
+These instructions will get you a copy of the project up and running on your local machine.
 
 ### Prerequisites
 
@@ -18,7 +18,7 @@ These isntructions will get you a copy of the project up and running on your loc
 Type this command into your terminal:
 
 ```
-git clone https://github.com/SickanEkman/xxxxxxxx
+git clone https://github.com/SickanEkman/skill-search
 ```
 
 ## Running 
