@@ -1,6 +1,6 @@
-# Skill Matcher
+# Skill Search
 
-Skill Matcher finds specific words in a text and outputs them and their start and end position in the text.
+Skill Search finds specific words in a text and outputs them and their start and end position in the text.
 
 Project is made for a recruitment process. The program only makes sense when two specific files are used as input (although I guess it *can* be used with any files where "skills.txt" is a list with items on new line)
 
