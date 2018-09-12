@@ -1,5 +1,10 @@
-Programmet identifierar 54 förekomster av kompetensord i job-posting.txt.
+Resultat
+Programmet identifierar 54 förekomster av kompetensord i job-posting.txt. Dessa består av 37 unika kompetensord. Jag kan inte manuellt identifiera några kompetensord som programmet inte upptäcker. Eventuella förbättringar av resultatet diskuteras i kommentarerna nedan.
 
+Verktyg
+Den enda moduler som importeras är "re" och "unittest" vilka ingår i pythons standardbibliotek. En fördel med detta är att programmet är robust vad gäller framtida uppdateringar och ändringar i källkoderna. Dessutom uppstår inga licens-frågor.
+
+Kommentar om funktionalitet
 En ansenlig mängd kompetensord ingår i andra vanliga ord ("r", "c" m.fl.) och det måste gå att separera mellan de fall där de ingår i andra ord och där de har den semantiska betydelsen som avses i kompetensordlistan. Därför letar programmet efter kompetensorden endast i två kontexter:
 * Kompetensorden inbäddade i whitespace.
 * Kompetensorden i språkliga kontexter som inte kan antas ändra dess betydelse, det vill säga med vissa skiljetecken innan och efteråt.
@@ -8,10 +13,8 @@ En kontext som inte tillåts är om kompetensordet ingår i ett sammansatt ord. 
 I vissa fall listas flera grammatiska former av ord i skills.txt (exempelvis "taxonomi" och "taxonomier") men i de flesta fall förekommer endast en form av ordet. Jag har valt att tolka uppgiften som att programmet ska hitta alla kompetensord i jobbannonsen oavsett dess grammatiska form eller plats i meningar.  Versaler ignoreras därför i programmet och vissa kongrueringar tillåts. Programmet letar:
 * Kompetensorden i sin ursprungliga form.
 * Kompetensorden med vanliga svenska grammatiska suffix för plural och bestämd form.
-Det faktum att dessa varianter tillåts innebär att programmet riskerar att plocka ut vissa falska positiva. Exempelvis "ren", om kompetensordet är "r". Detta bedömer jag som mindre allvarligt än om kompetensorden endast identifieras i sin grundform. I job-posting.txt förekommer bland annat ordet "arbetsförmedlingen", vilket inte skulle identifieras om programmet endast letade efter kompetensorden i sin grundform. Riskerna med falska positiva relativt falska negativa får vägas baserat på vad programmet ska användas till. Ett annat sätt att hantera detta skulle vara att använda ett lemmtiseringsverktyg. Eftersom jag inte känner till något som fungerar tillfredsställande - och många verktygs prestation kan förväntas minska ytterligare av att kompetensorden till stor del inte ingår i vanliga svenska ordlistor - väljer jag att inte implementera en lemmatiserare.
+Det faktum att dessa varianter tillåts innebär att programmet riskerar att plocka ut vissa falska positiva. Exempelvis "ren", om kompetensordet är "r". Detta bedömer jag som mindre allvarligt än om kompetensorden endast identifieras i sin listade form. I job-posting.txt förekommer bland annat ordet "arbetsförmedlingen", vilket inte skulle identifieras om programmet endast letade efter kompetensorden i sin grundform. Riskerna med falska positiva relativt falska negativa får vägas baserat på vad programmet ska användas till. Ett annat sätt att hantera detta skulle vara att använda ett lemmtiseringsverktyg. Eftersom jag inte känner till något som fungerar tillfredsställande - och många verktygs prestation kan förväntas minska ytterligare av att kompetensorden till stor del inte ingår i vanliga svenska ordlistor - väljer jag att inte implementera en lemmatiserare.
 
-I programmet används ett reguljärt utttyck för att identifiera kompetensorden i job-posting.txt. Fördelen är att det går att specificera exakt de kontexter och varianter av ordet som eftersöks på ett behändigt sätt. En nackdel med reguljära uttryck är att det drar ner programmets hastighet. Om hastigheten är av betydelse kan sökningen istället göras med till exempel en lång if-sats där varje enskild kombination av ord och kontext specificeras för sig.
+I programmet används ett reguljärt utttyck för att identifiera kompetensorden i job-posting.txt. Fördelen är att det går att specificera exakt de kontexter och varianter av ordet som eftersöks på ett behändigt sätt. En nackdel med reguljära uttryck är att det drar ner programmets hastighet. Om hastigheten är av betydelse kan sökningen istället göras med till exempel en längre if/elif-sats där varje enskild kombination av ord och kontext kontrolleras för sig.
 
 Output av programmet är kompetensorden i den form de listas i skills.txt, och deras start- och slutposition uttryckt i antal tecken i texten. Uppgiften öppnade upp för olika tolkningar av start- och slutpositioner och den aktuella valdes eftersom funktionen finns lättillgänglig i re.finditer.
-
-
